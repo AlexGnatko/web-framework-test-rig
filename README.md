@@ -49,3 +49,27 @@ run `composer install` in every folder where you can find
 
 Just run the `./test` shell script. By default, the test duration
 is 30 seconds with a 5-second warmup. You can change that by
+suppling extra arguments to `./test`. E.g. `./test 130 10`
+will set the duration of the test to 130 seconds with a 10-second
+warm-up period.
+
+### Results
+
+The test will output the results to `console.log` as mark-down code,
+which I copied here and added my comments:
+
+> **[View the results](RESULTS.md)**
+
+## Using this Docker setup for web-app development
+
+By adding new files to [nginx/conf.d](nginx/conf.d)
+and new project folders to [www](www) you can add new
+websites and web applications to your local Docker.
+
+The MySQL settings to use to connect from a PHP web app to MySQL
+are the following:
+
+* Host: `mysql-server`
+* Database: create a new one using PHPMyAdmin at `localhost:5001`.
+* User: `root` (or create a new one in PHPMyAdmin)
+* Password: `aqweZqeazasd`
