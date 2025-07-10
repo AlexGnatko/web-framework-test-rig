@@ -8,6 +8,13 @@ The settings were as set in this GitHub repository (read Dockerfiles).
 
 The duration of the test was **130** seconds with a **10-second** warm-up.
 
+### The job each test subject did
+
+Handling incoming HTTP requests with a $_GET parameter (`$_GET['number']`),
+getting the `md5` of it and `die()`-ing showing that md5 string. The
+test script checks if the expected md5 matches the actual md5, and
+counts that as a success.
+
 ## Top-Performing Web Frameworks
 
 Of course, the top of the list is `Plain PHP`, because the
