@@ -34,6 +34,17 @@ Then, log into WP admin and enable the `MD5 Test Endpoint` plugin.
 Check if `curl http://wordpress.test/test/` works (returns an MD5 hash)
 in the shell of the `test` container.
 
+### Setting up the other frameworks
+
+I mostly copied most of them to this repository, minus the `vendor`
+folders. Just go to the shell of the `php-dev` container and
+run `composer install` in every folder where you can find 
+`composer.json`. Check if these work:
+
+* `curl http://laravel.test/test/`
+* `curl http://lumen.test/test/`
+* `curl http://slim.test/test/`
+
 ### Running the test
 
 Just run the `./test` shell script. By default, the test duration
