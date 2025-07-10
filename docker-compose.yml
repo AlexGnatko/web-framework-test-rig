@@ -1,0 +1,67 @@
+version: "3.7"
+services:
+  web:
+    container_name: nginx-dev
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./www:/srv/www
+      - ./logs:/var/log/nginx
+    ports:
+      - 84:80
+    networks:
+      internal:
+        aliases:
+          - emps.test
+          - wordpress.test
+          - laravel.test
+          - lumen.test
+          - slim.test
+          - codeigniter.test
+  php:
+    build:
+      dockerfile: Dockerfile-php
+      context: .
+    restart: always
+    container_name: php-dev
+    volumes:
+      - ./www:/srv/www
+      - ./local.ini:/usr/local/etc/php/conf.d/local.ini:ro
+    networks:
+      - internal
+  mysql-server:
+    build:
+      dockerfile: Dockerfile-mysql
+      context: .
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: aqweZqeazasd
+    networks:
+      - internal
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    restart: always
+    environment:
+      PMA_HOST: mysql-server
+      PMA_USER: root
+      PMA_PASSWORD: aqweZqeazasd
+      UPLOAD_LIMIT: 512M
+    ports:
+      - "5001:80"
+    networks:
+      - internal
+  test:
+    restart: always
+    build:
+      dockerfile: Dockerfile-test
+      context: .
+    volumes:
+      - ./test:/srv/test
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge

@@ -1,0 +1,19 @@
+FROM php:8.4-fpm
+# Those PHP extensions aren't needed by the performance test, but their presence may affect the results.
+# As most production environments have those extensions installed, it is more realistic to have those
+# extensions installed in the test rig as well.
+RUN apt -y update
+RUN apt -y upgrade
+RUN apt --fix-missing -y install libicu-dev libonig-dev libcurl4-openssl-dev curl zlib1g-dev libpng-dev libjpeg-dev libwebp-dev libzip-dev zip git
+RUN docker-php-ext-configure gd --with-webp --with-jpeg && docker-php-ext-install gd
+RUN docker-php-ext-install mysqli mbstring curl exif zip bcmath intl
+RUN docker-php-ext-enable mysqli mbstring curl exif zip bcmath intl
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Clone the latest EMPS6
+RUN cd /srv && git clone https://github.com/AlexGnatko/EMPS6
+RUN cd /srv/EMPS6 && composer install
+
+RUN sed -i 's/^pm.max_children = .*/pm.max_children = 12/' /usr/local/etc/php-fpm.d/www.conf && \
+    sed -i 's/^;pm.max_requests = .*/pm.max_requests = 4/' /usr/local/etc/php-fpm.d/www.conf
+
+WORKDIR /srv/www

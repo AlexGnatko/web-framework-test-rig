@@ -1,0 +1,12 @@
+FROM node:21
+
+RUN apt -y update
+RUN apt -y upgrade
+RUN apt --fix-missing -y install libonig-dev libcurl4-openssl-dev curl default-mysql-client
+
+WORKDIR /srv/test
+
+COPY wait.sh /usr/local/bin/wait.sh
+RUN chmod +x /usr/local/bin/wait.sh
+
+ENTRYPOINT ["/usr/local/bin/wait.sh"]

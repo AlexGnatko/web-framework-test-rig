@@ -1,0 +1,31 @@
+{
+  "plain":  {
+    "name": "Plain PHP",
+    "url": "http://emps.test/plain.php"
+  },
+  "emps-fast":  {
+    "name": "EMPS (fast controller)",
+    "url": "http://emps.test/test/"
+  },
+  "emps":  {
+    "name": "EMPS (regular)",
+    "url": "http://emps.test/test-slow/"
+  },
+  "laravel": {
+    "name": "Laravel",
+    "url": "http://laravel.test/test/"
+  },
+  "lumen": {
+    "name": "Lumen",
+    "url": "http://lumen.test/test/"
+  },
+  "slim": {
+    "name": "Slim",
+    "url": "http://slim.test/test/"
+  },
+  "wordpress": {
+    "name": "Wordpress",
+    "url": "http://wordpress.test/test/",
+    "disabled": false
+  }
+}

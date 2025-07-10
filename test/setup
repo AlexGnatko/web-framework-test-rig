@@ -1,0 +1,4 @@
+#!/bin/bash
+mysql -h mysql-server -u root -paqweZqeazasd -e "CREATE DATABASE IF NOT EXISTS emps; CREATE DATABASE IF NOT EXISTS wordpress;"
+
+npm install axios crypto simple-statistics
