@@ -49,7 +49,7 @@ run `composer install` in every folder where you can find
 
 Just run the `./test` shell script. By default, the test duration
 is 30 seconds with a 5-second warmup. You can change that by
-suppling extra arguments to `./test`. E.g. `./test 130 10`
+supplying extra arguments to `./test`. E.g. `./test 130 10`
 will set the duration of the test to 130 seconds with a 10-second
 warm-up period.
 

@@ -2,7 +2,7 @@
 
 ## Test run
 
-I ran the test locally in Docker. My PC is an AMD Ryzen 5 7600X 6-Core Processor at 4.70 GHz with 64GB RAM.
+July 2025. I ran the test locally in Docker. My PC is an AMD Ryzen 5 7600X 6-Core Processor at 4.70 GHz with 64GB RAM.
 
 The settings were as set in this GitHub repository (read Dockerfiles).
 
